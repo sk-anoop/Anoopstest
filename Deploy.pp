@@ -1,17 +1,16 @@
-ec2_instance { 'Puppet-Client-1':
+ec2_instance { 'Docker Host':
   ensure            => present,
-  region            => 'us-east-1',
-  availability_zone => 'us-east-1c',
-  subnet            => 'POC-PUB1',
-  image_id          => 'ami-fce3c696',
+  region            => 'ap-south-1',
+  availability_zone => 'ap-south-1b',
+  subnet            => 'subnet-cbb3e086',
+  image_id          => 'ami-099fe766',
   instance_type     => 't2.micro',
   monitoring        => false,
-  key_name          => 'protonmail-east',
-  iam_instance_profile_name	=> 'S3_Access',
+  key_name          => 'Puppet-master-aw1',
+  iam_instance_profile_name	=> 'user1-aw1',
   security_groups   => ['default'],
   user_data         => template('/home/ubuntu/setup.sh'),
   tags              => {
     tag_name => 'test',
   },
 }
-
